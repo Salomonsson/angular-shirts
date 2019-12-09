@@ -1,0 +1,11 @@
+
+ul{
+    display: flex;
+    background-color: snow;
+}
+ul li{
+    margin: 10px;
+}
+ul li h2{
+    font-size: 1rem;
+}

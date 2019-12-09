@@ -1,0 +1,36 @@
+
+<div *ngIf="selectedShirt">
+    <h2>{{selectedShirt.name}} Detaljer</h2>  
+    <div><span>id: </span>{{selectedShirt.id}}</div>
+
+    <!-- The word uppercase in the interpolation binding, right after the pipe operator ( | ), activates the built-in UppercasePipe. -->
+    <!-- Pipes are a good way to format strings, currency amounts, dates and other display data. Angular ships with several built-in pipes and you can create your own. -->
+    <div><span>Name: </span>{{selectedShirt.name | uppercase}} </div>
+    <div><span>Type: </span>{{selectedShirt.type}}</div>
+    <div><span>Size: </span>{{selectedShirt.size}}</div>
+    <div><span>Image: </span><img [src]="selectedShirt.image"></div>
+    <hr>
+    <div>
+      <h3>Two way binding</h3>
+      <label>name:
+          <!-- [(ngModel)] is Angular's two-way data binding syntax. -->
+        <input [(ngModel)]="selectedShirt.name" placeholder="name"/>
+      </label>
+    </div>
+</div>
+
+
+
+<div>
+    <h2>My Shirts</h2>
+    <div class="gallery">
+      <div *ngFor="let shirtInstance of shirtsFakeArray" class="gallery-item">
+        <img [src]="shirtInstance.image" class="image-shirt" />
+        <div class="gallery-description">
+            <span class="badge">{{shirtInstance.id}}</span> {{shirtInstance.name}} <br />
+            <span (click)="onSelect(shirtInstance)">Add to cart</span>
+        </div>
+      </div>
+    </div>
+    
+</div>
