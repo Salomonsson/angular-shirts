@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Shirt } from '../classes/shirt';
+import { Shirt } from '../../classes/shirt';
 
 
 @Component({

@@ -26,6 +26,11 @@ export class ShirtService {
   //shirts: Shirt[];
   constructor() { }
 
+
+  /**
+   * Must have an asynchronous signature of some kind, an Observable because it will eventually use the Angular HttpClient.get method to fetch.
+   * Observable is one of the key classes in the RxJS library.
+   */
   getShirts(): Observable<Shirt[]> {
     return of(SHIRTS);
   }

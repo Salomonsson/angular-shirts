@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Shirt } from '../classes/shirt';
-import { ShirtService } from '../services/shirt/shirt.service';
+import { Shirt } from '../../classes/shirt';
+import { ShirtService } from '../../services/shirt/shirt.service';
 
 
 
