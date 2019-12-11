@@ -1,5 +1,14 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { Shirt } from '../../classes/shirt';
+import { SHIRTS } from '../../mock-shirts';
 
+
+
+/**
+ * @Injectable() decorator. This marks the class as one that participates in the dependency injection system. 
+ * The HeroService class is going to provide an injectable service, and it can also have its own injected dependencies.
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -14,5 +23,18 @@ import { Injectable } from '@angular/core';
 
 export class ShirtService {
 
+  //shirts: Shirt[];
   constructor() { }
+
+  getShirts(): Observable<Shirt[]> {
+    return of(SHIRTS);
+  }
+
+  /**
+   * 
+   * getHeroes(): void {
+        this.heroes = this.heroService.getHeroes();
+      }
+   */
+
 }

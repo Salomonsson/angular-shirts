@@ -7,7 +7,7 @@
 <div>
     <h2>My Shirts</h2>
     <div class="gallery">
-      <div *ngFor="let shirtInstance of shirtsFakeArray" class="gallery-item">
+      <div *ngFor="let shirtInstance of shirts" class="gallery-item">
         <img [src]="shirtInstance.image" class="image-shirt" />
         <div class="gallery-description">
             <span class="badge">{{shirtInstance.id}}</span> {{shirtInstance.name}} <br />
