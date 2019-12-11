@@ -20,6 +20,7 @@ export class ShirtsComponent implements OnInit {
 
   onSelect(shirt: Shirt): void {
     this.selectedShirt = shirt;
+    //console.log(this.selectedShirt);
   }
   
 }
