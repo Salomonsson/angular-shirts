@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Shirt } from '../../classes/shirt';
 import { SHIRTS } from '../../mock-shirts';
+import { MessageService } from '../message/message.service';
 
 
 
@@ -23,8 +24,7 @@ import { SHIRTS } from '../../mock-shirts';
 
 export class ShirtService {
 
-  //shirts: Shirt[];
-  constructor() { }
+  constructor(private messageService: MessageService) { }
 
 
   /**
@@ -32,6 +32,9 @@ export class ShirtService {
    * Observable is one of the key classes in the RxJS library.
    */
   getShirts(): Observable<Shirt[]> {
+
+    //Make note every time shirt is fetched
+    this.messageService.add('ShirtService: fetched Shirts');
     return of(SHIRTS);
   }
 

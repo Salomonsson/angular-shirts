@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Shirt } from '../../classes/shirt';
 import { ShirtService } from '../../services/shirt/shirt.service';
+import { MessageService } from '../../services/message/message.service';
 
 
 
@@ -16,13 +17,15 @@ export class ShirtsComponent implements OnInit {
   
 
   //Inject the ShirtService
-  constructor(private shirtService: ShirtService) { }
+  constructor(private shirtService: ShirtService, 
+              private messageService: MessageService) { }
 
   ngOnInit() {
     this.getShirts();
   }
 
   onSelect(shirt: Shirt): void {
+    this.messageService.add('shirts.component: Shirt detailed:' + shirt.id + " ("  + shirt.name + ")");
     this.selectedShirt = shirt;
     //console.log(this.selectedShirt);
   }
@@ -36,8 +39,6 @@ export class ShirtsComponent implements OnInit {
     //this.shirts = this.shirtService.getShirts()['value'];
     console.log('OK HÄR ÄR JAG');
     this.shirtService.getShirts().subscribe(shirts => this.shirts = shirts);
-
-
   }
 
   
