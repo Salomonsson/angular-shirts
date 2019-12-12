@@ -1,0 +1,21 @@
+<div *ngIf="!cartService.cartItems.length">
+    <h1>Your cart is empty</h1>
+</div>
+<div *ngIf="cartService.cartItems.length">
+    <h2>Your cart of shirts</h2>
+    <h2>cartItems ({{cartService.cartItems.length}})</h2>
+    <button class="clear" (click)="cartService.clear();">clear cart</button>
+    <div>Current price total: <span>{{cartService.sum}}</span></div>
+
+    <div *ngFor='let item of cartService.cartItems' class="Media">
+        <img [src]="item.image" class="Media-figure"> <br />
+        <p class="Media-body">
+            <b>{{item.name}} {{item.type}} ({{item.size}}) - Remove</b> <br />
+            <span>{{item.description}}</span>
+        </p>
+        <p>
+            <span>Pris: {{item.price}}</span>
+        </p>
+    </div>
+
+</div>

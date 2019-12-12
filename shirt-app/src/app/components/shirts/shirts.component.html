@@ -2,16 +2,26 @@
 
 <div>
     <!-- [hero]="selectedHero" is an Angular property binding. -->
-    <app-shirt-detail [shirt]="selectedShirt"></app-shirt-detail>
+    <!-- <app-shirt-detail [shirt]="selectedShirt"></app-shirt-detail> -->
 </div>
 <div>
     <h2>My Shirts</h2>
     <div class="gallery">
       <div *ngFor="let shirtInstance of shirts" class="gallery-item">
-        <img [src]="shirtInstance.image" class="image-shirt" />
+        <span>Is in cart: {{shirtInstance.inCart}}</span> <br />
+        <a routerLink="/detail/{{shirtInstance.id}}">
+            <img [src]="shirtInstance.image" class="image-shirt" />
+        </a>
         <div class="gallery-description">
             <span class="badge">{{shirtInstance.id}}</span> {{shirtInstance.name}} <br />
-            <span (click)="onSelect(shirtInstance)">Add to cart</span>
+            <span class="badge">Pris: </span> {{shirtInstance.price}}
+            <hr>
+            <div *ngIf="shirtInstance.inCart">
+                <button (click)="RemoveFromCart(shirtInstance)">Remove from cart</button>
+            </div>
+            <div *ngIf="!shirtInstance.inCart">
+                <button (click)="addToCart(shirtInstance)">Add to cart</button>
+            </div>
         </div>
       </div>
     </div>

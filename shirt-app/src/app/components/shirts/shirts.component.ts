@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Shirt } from '../../classes/shirt';
 import { ShirtService } from '../../services/shirt/shirt.service';
 import { MessageService } from '../../services/message/message.service';
+import { CartService } from '../../services/cart/cart.service';
 
 
 
@@ -18,12 +19,40 @@ export class ShirtsComponent implements OnInit {
 
   //Inject the ShirtService
   constructor(private shirtService: ShirtService, 
-              private messageService: MessageService) { }
+              private messageService: MessageService,
+              private cartService: CartService) { }
 
   ngOnInit() {
     this.getShirts();
   }
 
+
+  /**
+   * Add item to cart service
+   * @param shirt 
+   */
+  addToCart(shirt: Shirt): void {
+    shirt.inCart =  true;
+    this.cartService.AddItemCart(shirt);
+    this.cartService.CurrentPrice();
+  }
+
+
+  /**
+   * Remove item from cart
+   * @param shirt object
+   */
+  RemoveFromCart(shirt: Shirt): void {
+    shirt.inCart =  false;
+    this.cartService.RemoveItemCart(shirt);
+    this.cartService.CurrentPrice();
+  }
+
+
+  /**
+   * Select current item for detailed view
+   * @param shirt object
+   */
   onSelect(shirt: Shirt): void {
     this.messageService.add('shirts.component: Shirt detailed:' + shirt.id + " ("  + shirt.name + ")");
     this.selectedShirt = shirt;
@@ -37,7 +66,6 @@ export class ShirtsComponent implements OnInit {
    */
   getShirts(): void {
     //this.shirts = this.shirtService.getShirts()['value'];
-    console.log('OK HÄR ÄR JAG');
     this.shirtService.getShirts().subscribe(shirts => this.shirts = shirts);
   }
 

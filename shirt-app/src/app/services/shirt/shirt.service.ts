@@ -39,6 +39,16 @@ export class ShirtService {
   }
 
   /**
+   * Get the specific shirt based on id
+   */
+  getShirt(id: number): Observable<Shirt> {
+    // TODO: send the message _after_ fetching the hero
+    this.messageService.add(`ShirtService: fetched shirt id=${id}`);
+    return of(SHIRTS.find(shirt => shirt.id === id));
+  }
+
+
+  /**
    * 
    * getHeroes(): void {
         this.heroes = this.heroService.getHeroes();

@@ -4,4 +4,7 @@ export class Shirt {
     type: string;
     size: string;
     image: string;
+    description: string;
+    price: number;
+    inCart: boolean;
   }
