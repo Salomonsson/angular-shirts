@@ -12,6 +12,7 @@ export class CartService {
 
   sum = 0;
   cartItems: object[] = [];
+  hasCartRefreshed: boolean = false;
   
 
   constructor(private messageService: MessageService) { }
@@ -56,8 +57,8 @@ export class CartService {
   clear() {
     this.sum = 0;
     this.cartItems = [];
+    this.hasCartRefreshed = true;
   }
-
 
   /**
    * Must have an asynchronous signature of some kind, an Observable because it will eventually use the Angular HttpClient.get method to fetch.

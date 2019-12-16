@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { Shirt } from '../../classes/shirt';
 import { SHIRTS } from '../../mock-shirts';
 import { MessageService } from '../message/message.service';
+import { CartService } from '../cart/cart.service';
 
 
 
@@ -24,7 +25,8 @@ import { MessageService } from '../message/message.service';
 
 export class ShirtService {
 
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService,
+              private cartService: CartService) { }
 
 
   /**
@@ -32,11 +34,17 @@ export class ShirtService {
    * Observable is one of the key classes in the RxJS library.
    */
   getShirts(): Observable<Shirt[]> {
-
     //Make note every time shirt is fetched
     this.messageService.add('ShirtService: fetched Shirts');
-    return of(SHIRTS);
+    //Only if cart has been emptied 
+    if(this.cartService.hasCartRefreshed){
+      this.BasketRefreshed();
+      return of(SHIRTS);
+    }else{
+      return of(SHIRTS);
+    }
   }
+
 
   /**
    * Get the specific shirt based on id
@@ -49,8 +57,23 @@ export class ShirtService {
 
 
   /**
+   * Refresh Basket - cart has been emptied and all the boolean 'incart' needs to be set false
+   */
+  BasketRefreshed(): void {
+    //set global check/flag ti false
+    this.cartService.hasCartRefreshed =  false;
+    //set all objects to inCart false
+    SHIRTS.forEach((element, index, array) => {
+      if(element['inCart']){
+        element.inCart = false;
+      }
+    });
+  }
+
+
+  /**
    * 
-   * getHeroes(): void {
+   *getHeroes(): void {
         this.heroes = this.heroService.getHeroes();
       }
    */
