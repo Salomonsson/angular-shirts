@@ -15,6 +15,7 @@ export class ShirtsComponent implements OnInit {
   //import the array of fake shirts
   selectedShirt: Shirt;
   shirts: Shirt[];
+  //shirts: Any[];
   
 
   //Inject the ShirtService
@@ -66,7 +67,13 @@ export class ShirtsComponent implements OnInit {
    */
   getShirts(): void {
     //this.shirts = this.shirtService.getShirts()['value'];
-    this.shirtService.getShirts().subscribe(shirts => this.shirts = shirts);
+    //this.shirtService.getShirts().subscribe(shirts => this.shirts = shirts);
+    //this.shirts = this.shirtService.getShirts()['value'];
+    this.shirtService.getShirts().subscribe(data => {
+      //console.log(data.Shirts);
+      this.shirts = data.Shirts;
+      //this.shirts = data;
+  });
   }
 
   

@@ -30,58 +30,38 @@ import { CartService } from '../cart/cart.service';
 
 export class ShirtService {
 
-  public shirtUrl = 'http://www.salomonsson.it/SALOCONSULTING/API/f-e/mock-shirts.php';  // URL to web api
-  arr: string[] = [];
+  private readonly apiBaseUrl = 'http://www.salomonsson.it/SALOCONSULTING/API/f-e/mock-shirts.php';  // URL to web api
 
   constructor(public http: HttpClient,
               private messageService: MessageService,
               private cartService: CartService) { }
 
+    public arr:any[] = new Array();   
 
+
+    fetchAll() {
+      this.arr.push(this.http.get<any>(this.apiBaseUrl));
+      console.log(this.arr);
+      return this.http.get<any>(this.apiBaseUrl);
+    }
   /**
    * Must have an asynchronous signature of some kind, an Observable because it will eventually use the Angular HttpClient.get method to fetch.
    * Observable is one of the key classes in the RxJS library.
    */
   getShirts(): Observable<Shirt[]> {
-
-    // return this.http.get(`https://api.github.com/search/users?q=saloconsulting`)
-    // .map(response => response.json().items) // <------
-    // .subscribe(
-    //   data => data,
-    //   error => console.log(error)
-    // );
-
-    // console.log(this.http.get<Shirt[]>(this.shirtUrl).pipe(map(data => {})));
-    // return this.http.get<Shirt[]>(this.shirtUrl);
-
-    //return this.http.get(this.shirtsUrl).pipe(map((response: any) => response.json()));
-
-    // console.log(this.http.get<Shirt[]>(this.shirtsUrl));
-    return this.http.get<Shirt[]>('http://www.salomonsson.it/SALOCONSULTING/API/f-e/mock-shirts.php');
-    //return this.http.get<Shirt[]>('http://www.salomonsson.it/SALOCONSULTING/API/f-e/mock-shirts.php').subscribe(data => this.arr = data.json());
-
-    // this.http.get<Shirt>(this.shirtsUrl).subscribe(data => {
-    //   console.log(data);
-    // });
-
-    // return this.http.get<Shirt[]>(this.shirtsUrl)
-    // .pipe(tap(_ => this.log('fetched shirts')),
-    //   catchError(this.handleError<Shirt[]>('getShirts', []))
-    // );
-
-    // //return this.http.get(`http://www.salomonsson.it/SALOCONSULTING/API/AF/IT.php`);
-
-    //Make note every time shirt is fetched
     this.messageService.add('ShirtService: fetched Shirts');
+    this.fetchAll();
+
     //Only if cart has been emptied 
     if(this.cartService.hasCartRefreshed){
       this.BasketRefreshed();
-      // return of(SHIRTS);
+      //return this.http.get<Shirt[]>(this.apiBaseUrl);
+      return this.http.get<any>(this.apiBaseUrl);
     }else{
-      // return of(SHIRTS);
+      return this.http.get<any>(this.apiBaseUrl);
+      //return this.http.get<Shirt[]>(this.apiBaseUrl);
     }
   }
-
 
   /**
    * Get the specific shirt based on id
