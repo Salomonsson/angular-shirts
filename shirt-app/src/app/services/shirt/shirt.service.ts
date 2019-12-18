@@ -1,4 +1,9 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClientModule }    from '@angular/common/http';
+//import { map, filter, switchMap } from 'rxjs/operators';
+import { map, filter, catchError, mergeMap } from 'rxjs/operators';
+
 import { Observable, of } from 'rxjs';
 import { Shirt } from '../../classes/shirt';
 import { SHIRTS } from '../../mock-shirts';
@@ -25,7 +30,11 @@ import { CartService } from '../cart/cart.service';
 
 export class ShirtService {
 
-  constructor(private messageService: MessageService,
+  public shirtUrl = 'http://www.salomonsson.it/SALOCONSULTING/API/f-e/mock-shirts.php';  // URL to web api
+  arr: string[] = [];
+
+  constructor(public http: HttpClient,
+              private messageService: MessageService,
               private cartService: CartService) { }
 
 
@@ -34,14 +43,42 @@ export class ShirtService {
    * Observable is one of the key classes in the RxJS library.
    */
   getShirts(): Observable<Shirt[]> {
+
+    // return this.http.get(`https://api.github.com/search/users?q=saloconsulting`)
+    // .map(response => response.json().items) // <------
+    // .subscribe(
+    //   data => data,
+    //   error => console.log(error)
+    // );
+
+    // console.log(this.http.get<Shirt[]>(this.shirtUrl).pipe(map(data => {})));
+    // return this.http.get<Shirt[]>(this.shirtUrl);
+
+    //return this.http.get(this.shirtsUrl).pipe(map((response: any) => response.json()));
+
+    // console.log(this.http.get<Shirt[]>(this.shirtsUrl));
+    return this.http.get<Shirt[]>('http://www.salomonsson.it/SALOCONSULTING/API/f-e/mock-shirts.php');
+    //return this.http.get<Shirt[]>('http://www.salomonsson.it/SALOCONSULTING/API/f-e/mock-shirts.php').subscribe(data => this.arr = data.json());
+
+    // this.http.get<Shirt>(this.shirtsUrl).subscribe(data => {
+    //   console.log(data);
+    // });
+
+    // return this.http.get<Shirt[]>(this.shirtsUrl)
+    // .pipe(tap(_ => this.log('fetched shirts')),
+    //   catchError(this.handleError<Shirt[]>('getShirts', []))
+    // );
+
+    // //return this.http.get(`http://www.salomonsson.it/SALOCONSULTING/API/AF/IT.php`);
+
     //Make note every time shirt is fetched
     this.messageService.add('ShirtService: fetched Shirts');
     //Only if cart has been emptied 
     if(this.cartService.hasCartRefreshed){
       this.BasketRefreshed();
-      return of(SHIRTS);
+      // return of(SHIRTS);
     }else{
-      return of(SHIRTS);
+      // return of(SHIRTS);
     }
   }
 
@@ -77,5 +114,10 @@ export class ShirtService {
         this.heroes = this.heroService.getHeroes();
       }
    */
+
+    /** Log a HeroService message with the MessageService */
+    private log(message: string) {
+      this.messageService.add(`HeroService: ${message}`);
+    }
 
 }
