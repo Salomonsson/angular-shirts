@@ -1,7 +1,7 @@
 
 
 {
-  "shirtInfo": "This is the shirt fake data.",
+  "shirtInfo": "Shirts overview - fake json data.",
   "Shirts": [
        { "id": 11, "price": 499, "inCart": false, "description": "Cusna skjorta från These Glory Days är tillverkad i ett mjukt bomullsmaterial med klassisk button-down krage och regular passform. Modellen är 187 cm och har på sig en storlek M. True to size. <br /> <br/> Rutig, halvfodrad kostymbyxa i ullmix från These Glory Days. Byxorna har två sidofickor och en mindre myntficka framtill. Kostymbyxorna har dessutom två fickor bak och bälteshällor. T Glen Plaid Pants byxan kommer i en smal passform med nedvikt kant nedtill och slitkant. Combine with Glen Plaid Blazer for a complete suit.",   "name": "Brun",  "type": "Cusual",       "size": "Larg",  "image": "https://voltfashion.imgix.net/globalassets/productimages/7239410_890_f_f_cusna_shirt_scandinavia_dbrown5473.jpg?auto=format&w=800"},
        { "id": 12, "price": 599, "inCart": false, "description": "Cusna skjorta från These Glory Days är tillverkad i ett mjukt bomullsmaterial med klassisk button-down krage och regular passform. Modellen är 187 cm och har på sig en storlek M. True to size. <br /> <br/> Rutig, halvfodrad kostymbyxa i ullmix från These Glory Days. Byxorna har två sidofickor och en mindre myntficka framtill.  Kostymbyxorna har dessutom två fickor bak och bälteshällor. T Glen Plaid Pants byxan kommer i en smal passform med nedvikt kant nedtill och slitkant.  Combine with Glen Plaid Blazer for a complete suit.", "name": "Ljusgrå",  "type": "Cusual", "size": "Mediu", "image": "https://voltfashion.imgix.net/globalassets/productimages/7239410_940_f_h_cusna_shirt_scandinavia_lgrey.jpg?auto=format&w=600"},

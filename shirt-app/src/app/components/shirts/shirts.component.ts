@@ -17,7 +17,7 @@ export class ShirtsComponent implements OnInit {
   selectedShirt: Shirt;
   //shirts: Shirt[];
   shirts: Shirt[];
-  
+  header: string;
 
   //Inject the ShirtService
   constructor(private shirtService: ShirtService, 
@@ -89,6 +89,7 @@ export class ShirtsComponent implements OnInit {
     this.shirtService.getShirts().subscribe(data => {
       //console.log(data.Shirts);
       this.shirts = data.Shirts;
+      this.header = data.shirtInfo;
       //this.shirts = data;
   });
   }
