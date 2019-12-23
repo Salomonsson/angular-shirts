@@ -5,9 +5,10 @@
     <!-- <app-shirt-detail [shirt]="selectedShirt"></app-shirt-detail> -->
 </div>
 <div>
+    {{getShirts}}
     <h2>My Shirts</h2>
     <div class="gallery">
-      <div *ngFor="let shirtInstance of shirts" class="gallery-item">
+      <div *ngFor="let shirtInstance of shirts; trackBy: trackByFn" class="gallery-item">
         <span>Is in cart: {{shirtInstance.inCart}}</span> <br />
         <a routerLink="/detail/{{shirtInstance.id}}">
             <img [src]="shirtInstance.image" class="image-shirt" />

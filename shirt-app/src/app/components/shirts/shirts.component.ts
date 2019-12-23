@@ -4,6 +4,7 @@ import { ShirtService } from '../../services/shirt/shirt.service';
 import { MessageService } from '../../services/message/message.service';
 import { CartService } from '../../services/cart/cart.service';
 
+import {ShirtView} from '../../interfaces/ShirtView'
 
 
 @Component({
@@ -14,8 +15,8 @@ import { CartService } from '../../services/cart/cart.service';
 export class ShirtsComponent implements OnInit {
   //import the array of fake shirts
   selectedShirt: Shirt;
-  shirts: Shirt[];
-  //shirts: Any[];
+  //shirts: Shirt[];
+  shirts: any[];
   
 
   //Inject the ShirtService
@@ -60,6 +61,15 @@ export class ShirtsComponent implements OnInit {
     //console.log(this.selectedShirt);
   }
 
+  /**
+   * trackBy function which will return an unique identifier for each item.
+   * @param index 
+   * @param item 
+   */
+  trackByFn(index, item) {    
+    return item.id; // unique id corresponding to the item
+  }
+
 
   /**
    * The assignment occurs synchronously, as if the server could return heroes instantly or the browser could freeze the 
@@ -69,11 +79,17 @@ export class ShirtsComponent implements OnInit {
     //this.shirts = this.shirtService.getShirts()['value'];
     //this.shirtService.getShirts().subscribe(shirts => this.shirts = shirts);
     //this.shirts = this.shirtService.getShirts()['value'];
-    this.shirtService.getShirts().subscribe(data => {
-      //console.log(data.Shirts);
-      this.shirts = data.Shirts;
-      //this.shirts = data;
-  });
+    console.log('hejsan från komponenten. ');
+    this.shirtService.getShirts();
+    //console.log(this.shirtService.getShirts());
+    //this.shirts = this.shirtService.getShirts();
+
+  //   //this.shirts = this.shirtService.getShirts();
+  //   this.shirtService.getShirts().subscribe(data => {
+  //     //console.log(data.Shirts);
+  //     this.shirts = data.Shirts;
+  //     //this.shirts = data;
+  // });
   }
 
   
