@@ -4,7 +4,7 @@ import { ShirtService } from '../../services/shirt/shirt.service';
 import { MessageService } from '../../services/message/message.service';
 import { CartService } from '../../services/cart/cart.service';
 
-import {ShirtView} from '../../interfaces/ShirtView'
+import {ShirtView} from '../../interfaces/iShirtView'
 
 
 @Component({
@@ -16,7 +16,7 @@ export class ShirtsComponent implements OnInit {
   //import the array of fake shirts
   selectedShirt: Shirt;
   //shirts: Shirt[];
-  shirts: any[];
+  shirts: Shirt[];
   
 
   //Inject the ShirtService
@@ -80,16 +80,17 @@ export class ShirtsComponent implements OnInit {
     //this.shirtService.getShirts().subscribe(shirts => this.shirts = shirts);
     //this.shirts = this.shirtService.getShirts()['value'];
     console.log('hejsan från komponenten. ');
-    this.shirtService.getShirts();
+    //this.shirtService.index();
+    //this.shirts = this.shirtService.p;
     //console.log(this.shirtService.getShirts());
     //this.shirts = this.shirtService.getShirts();
 
   //   //this.shirts = this.shirtService.getShirts();
-  //   this.shirtService.getShirts().subscribe(data => {
-  //     //console.log(data.Shirts);
-  //     this.shirts = data.Shirts;
-  //     //this.shirts = data;
-  // });
+    this.shirtService.getShirts().subscribe(data => {
+      //console.log(data.Shirts);
+      this.shirts = data.Shirts;
+      //this.shirts = data;
+  });
   }
 
   

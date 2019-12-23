@@ -12,7 +12,7 @@ import { SHIRTS } from '../../mock-shirts';
 // import { MessageService } from '../message/message.service';
 import { CartService } from '../cart/cart.service';
 import {shareReplay} from 'rxjs/operators';
-import {ShirtView} from '../../interfaces/ShirtView'
+import {ShirtView} from '../../interfaces/iShirtView'
 
 
 
@@ -37,7 +37,7 @@ export class ShirtService {
   private readonly apiBaseUrl = 'http://www.salomonsson.it/SALOCONSULTING/API/f-e/mock-shirts.php';  // URL to web api
   p: ShirtView[] = [];
   //p: ShirtView[];
-  header: string = "";
+  header: string;
   
   constructor(public http: HttpClient,
               private cartService: CartService) { 
@@ -50,7 +50,7 @@ export class ShirtService {
     this.http.get<ShirtView>(this.apiBaseUrl).subscribe(
       //response => this.header = response[0].shirtInfo,
       //response => this.p.push(response.Shirts)
-      response => this.p.push(response.Shirts),
+      response => this.p.push(response),
       response => this.header = response.shirtInfo
     );
   }
@@ -59,11 +59,13 @@ export class ShirtService {
    * Must have an asynchronous signature of some kind, an Observable because it will eventually use the Angular HttpClient.get method to fetch.
    * Observable is one of the key classes in the RxJS library.
    */
-  //getShirts(): Observable<any[]> {
-  //getShirts(): Observable<ShirtView> {
-  getShirts(){
-    console.log('HEADER:: ' + this.header);
-    console.log(this.p);
+  //getShirts(): Observable<any> {
+  getShirts(): Observable<ShirtView> {
+  //getShirts(){
+    //this.index();
+    //console.log(this.p);
+    return this.http.get<ShirtView>(this.apiBaseUrl);
+    //return this.header;
     //
 
     // if(this.cartService.hasCartRefreshed){
