@@ -5,7 +5,12 @@
     <!-- <app-shirt-detail [shirt]="selectedShirt"></app-shirt-detail> -->
 </div>
 <div>
-    <h2>{{header}}</h2>
+    <h3>Size {{shirtsLength}}</h3>
+    <div>
+        <span *ngFor="let t of sizes; trackBy: trackByFn"> {{t.size}}</span>
+    </div>
+    <hr>
+    <h2>{{header}} (Arr length: {{this.shirtService.shirtArray.length}})</h2>
     <div class="gallery">
       <div *ngFor="let shirtInstance of shirts; trackBy: trackByFn" class="gallery-item">
         <span>Is in cart: {{shirtInstance.inCart}}</span> <br />

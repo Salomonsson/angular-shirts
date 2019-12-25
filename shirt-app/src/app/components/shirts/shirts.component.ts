@@ -15,8 +15,9 @@ import {ShirtView} from '../../interfaces/iShirtView'
 export class ShirtsComponent implements OnInit {
   //import the array of fake shirts
   selectedShirt: Shirt;
-  //shirts: Shirt[];
-  shirts: Shirt[];
+  shirtsLength: any;
+  shirts: Shirt;
+  sizes : any;
   header: string;
 
   //Inject the ShirtService
@@ -76,22 +77,11 @@ export class ShirtsComponent implements OnInit {
    * UI while it waited for the server's response.
    */
   getShirts(): void {
-    //this.shirts = this.shirtService.getShirts()['value'];
-    //this.shirtService.getShirts().subscribe(shirts => this.shirts = shirts);
-    //this.shirts = this.shirtService.getShirts()['value'];
-    console.log('hejsan från komponenten. ');
-    //this.shirtService.index();
-    //this.shirts = this.shirtService.p;
-    //console.log(this.shirtService.getShirts());
-    //this.shirts = this.shirtService.getShirts();
-
-  //   //this.shirts = this.shirtService.getShirts();
     this.shirtService.getShirts().subscribe(data => {
-      //console.log(data.Shirts);
       this.shirts = data.Shirts;
       this.header = data.shirtInfo;
-      //this.shirts = data;
-  });
+    });
+    this.sizes = this.shirtService.shirtArray;
   }
 
   

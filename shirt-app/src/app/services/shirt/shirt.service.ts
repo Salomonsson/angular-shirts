@@ -35,8 +35,12 @@ import {ShirtView} from '../../interfaces/iShirtView'
 export class ShirtService {
 
   private readonly apiBaseUrl = 'http://www.salomonsson.it/SALOCONSULTING/API/f-e/mock-shirts.php';  // URL to web api
-  p: ShirtView[] = [];
-  //p: ShirtView[];
+  //shirtArray: ShirtView[] = [];
+  shirtArray: Shirt[] = [];
+  shirtArrayLength: any;
+  //shirtArray: object[] = [];
+  shirtList: Shirt;
+  
   header: string;
   
   constructor(public http: HttpClient,
@@ -48,12 +52,20 @@ export class ShirtService {
 
   index(){
     this.http.get<ShirtView>(this.apiBaseUrl).subscribe(
-      //response => this.header = response[0].shirtInfo,
-      //response => this.p.push(response.Shirts)
-      response => this.p.push(response),
-      response => this.header = response.shirtInfo
+      //response => console.log(response)
+      //response => this.shirtArray.push(response.Shirts)
+      response => this.createArrFunc(response.Shirts)
     );
   }
+
+  createArrFunc(obj){
+    console.log(obj.length);
+    this.shirtArrayLength = obj.length;
+    for (let o of obj) {
+      this.shirtArray.push(o);
+    }
+  }
+
 
   /**
    * Must have an asynchronous signature of some kind, an Observable because it will eventually use the Angular HttpClient.get method to fetch.
@@ -61,22 +73,9 @@ export class ShirtService {
    */
   //getShirts(): Observable<any> {
   getShirts(): Observable<ShirtView> {
-  //getShirts(){
-    //this.index();
-    //console.log(this.p);
     return this.http.get<ShirtView>(this.apiBaseUrl);
-    //return this.header;
-    //
-
-    // if(this.cartService.hasCartRefreshed){
-    //   this.BasketRefreshed();
-    //   return this.http.get<any>(this.apiBaseUrl);
-    //   //return this.http.get(this.apiBaseUrl).toPromise().then(response => response as any[]).catch();
-    // }else{
-    //   return this.http.get<any>(this.apiBaseUrl);
-    //   //return this.http.get<Shirt[]>(this.apiBaseUrl);
-    //}
   }
+
 
   /**
    * Get the specific shirt based on id
