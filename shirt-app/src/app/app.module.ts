@@ -11,6 +11,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { CartComponent } from './components/cart/cart.component';
 import { CartBasketComponent } from './components/cart-basket/cart-basket.component';
 
+//State management
+// import { StoreModule } from '@ngrx/store'; 
+// import { CustomerReducer } from './store/customer/customer.reducer';
+import { CustomersViewComponent } from './components/customers-view/customers-view.component';
+import { CustomerAddComponent } from './components/customer-add/customer-add.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +24,9 @@ import { CartBasketComponent } from './components/cart-basket/cart-basket.compon
     ShirtDetailComponent,
     MessagesComponent,
     CartComponent,
-    CartBasketComponent
+    CartBasketComponent,
+    CustomersViewComponent,
+    CustomerAddComponent
   ],
   // @NgModule metadata's imports array, which contains a list of external modules that the app needs.
   imports: [
@@ -27,6 +34,7 @@ import { CartBasketComponent } from './components/cart-basket/cart-basket.compon
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    // StoreModule.forRoot({ customers: CustomerReducer })
   ],
   providers: [],
   bootstrap: [AppComponent]
