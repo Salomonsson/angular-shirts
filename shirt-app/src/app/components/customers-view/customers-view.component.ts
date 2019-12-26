@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-//import {Customer} from '../../classes/customer';
-import {Customer} from './../../models/customer'; 
+import {Customer} from '../../classes/customer';
+// import {Customer} from './../../models/customer'; 
 import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
 @Component({

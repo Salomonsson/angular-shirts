@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import {select, Store} from '@ngrx/store'; 
-//import {Customer} from '../../classes/customer'; 
-import {Customer} from './../../models/customer'; 
+import {Customer} from '../../classes/customer'; 
+// import {Customer} from './../../models/customer'; 
 import {Observable} from 'rxjs'; 
 import {CustomerAdd} from '../../store/customer/customer.actions';
 

@@ -12,8 +12,8 @@ import { CartComponent } from './components/cart/cart.component';
 import { CartBasketComponent } from './components/cart-basket/cart-basket.component';
 
 //State management
-// import { StoreModule } from '@ngrx/store'; 
-// import { CustomerReducer } from './store/customer/customer.reducer';
+import { StoreModule } from '@ngrx/store'; 
+import { CustomerReducer } from './store/customer/customer.reducer';
 import { CustomersViewComponent } from './components/customers-view/customers-view.component';
 import { CustomerAddComponent } from './components/customer-add/customer-add.component';
 
@@ -34,7 +34,7 @@ import { CustomerAddComponent } from './components/customer-add/customer-add.com
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    // StoreModule.forRoot({ customers: CustomerReducer })
+    StoreModule.forRoot({ customers: CustomerReducer })
   ],
   providers: [],
   bootstrap: [AppComponent]
