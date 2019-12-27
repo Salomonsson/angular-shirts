@@ -12,13 +12,15 @@ import {CustomerAdd} from '../../store/customer/customer.actions';
   templateUrl: './customer-add.component.html',
   styleUrls: ['./customer-add.component.css']
 })
+
 export class CustomerAddComponent implements OnInit {
 
-
   customers: Observable<Customer[]>; 
+
   constructor(private store: Store<{ customers: Customer[] }>) { 
     this.customers = store.pipe(select('customers')); 
   } 
+
   AddCustomer(customerName: string) { 
     const customer = new Customer(); 
     customer.name = customerName; 

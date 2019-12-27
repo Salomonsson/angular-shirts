@@ -1,0 +1,14 @@
+<p>customer-selected works!</p>
+
+<!-- {{selectedCustomer.name}} -->
+<ul class="customers">
+    {{customers}}
+    <li *ngFor="let customer of customers | async; let i=index">
+        <div *ngIf="customer.selected">
+        <span >{{i+1}}.</span> {{customer.name}}({{customer.selected}})
+        <!-- <button style="float: right" (click)="removeCustomer(i)">Remove</button>
+        <button style="float: right" (click)="selectCustomer(i)">selected</button> -->
+        </div>
+    </li>
+</ul>
+

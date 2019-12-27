@@ -1,3 +1,4 @@
 export class Customer {
-    name: String = ''; 
+    name: String = '';
+    selected: boolean = false;
 }

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ShirtsComponent } from '../app/components/shirts/shirts.component';
 import { ShirtDetailComponent } from '../app/components/shirt-detail/shirt-detail.component';
 import { CartComponent }   from '../app/components/cart/cart.component';
+import { CustomersViewComponent }   from '../app/components/customers-view/customers-view.component';
 import { CommonModule } from '@angular/common';
 
 
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'shirts', component: ShirtsComponent },
   { path: 'detail/:id', component: ShirtDetailComponent },
   { path: 'cart', component: CartComponent },
+  { path: 'customers', component: CustomersViewComponent },
 ];
 
 

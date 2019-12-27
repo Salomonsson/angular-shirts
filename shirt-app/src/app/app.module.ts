@@ -16,6 +16,7 @@ import { StoreModule } from '@ngrx/store';
 import { CustomerReducer } from './store/customer/customer.reducer';
 import { CustomersViewComponent } from './components/customers-view/customers-view.component';
 import { CustomerAddComponent } from './components/customer-add/customer-add.component';
+import { CustomerSelectedComponent } from './components/customer-selected/customer-selected.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CustomerAddComponent } from './components/customer-add/customer-add.com
     CartComponent,
     CartBasketComponent,
     CustomersViewComponent,
-    CustomerAddComponent
+    CustomerAddComponent,
+    CustomerSelectedComponent
   ],
   // @NgModule metadata's imports array, which contains a list of external modules that the app needs.
   imports: [

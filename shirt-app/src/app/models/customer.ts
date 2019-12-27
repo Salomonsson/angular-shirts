@@ -1,3 +1,3 @@
-export class Customer { 
-    name: String = ''; 
+export class die { 
+    lolremove: String = ''; 
 }

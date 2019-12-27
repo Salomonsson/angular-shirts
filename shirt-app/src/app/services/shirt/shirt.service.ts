@@ -59,7 +59,7 @@ export class ShirtService {
   }
 
   createArrFunc(obj){
-    console.log(obj.length);
+    // console.log(obj.length);
     this.shirtArrayLength = obj.length;
     for (let o of obj) {
       this.shirtArray.push(o);
