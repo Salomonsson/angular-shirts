@@ -1,4 +1,29 @@
-<h4>List of Customers</h4>
+<h4>Customers-view component</h4>
+  {{ selected$.name }}
+    <div *ngFor="let s of selected | async; let i=index">
+      {{s.name}}
+    </div>
+
+
+<div>
+  <div *ngFor="let customer of customers | async; let i=index" style="background-color: lightgray; padding:2rem; margin: 1rem;">
+    <div>
+      <span >{{i+1}}.</span>
+      <span>{{customer.name}}({{customer.selected}})</span>
+      <button style="float: right" (click)="removeCustomer(i)">Remove</button>
+      <button style="float: right" (click)="selectCustomer(i)">selected</button>
+    </div>
+    <div>
+      <h5>Cart items</h5>
+      <span *ngFor="let shirt of customer.Shirts">
+        {{shirt.name}}
+      </span>
+    </div>
+  </div>
+</div>
+
+
+
 <ul class="customers">
   <li *ngFor="let customer of customers | async; let i=index">
     <span >{{i+1}}.</span> {{customer.name}}({{customer.selected}})
@@ -7,6 +32,23 @@
   </li>
 </ul>
 
+<div *ngIf="customers">
+    <select class="selectpicker" style="width: 150px; height:50px; padding: 1rem; font-size: 1rem; font-weight:bold;">
+        <option *ngFor="let customer of customers | async; let i=index"  value="customer.name">
+            <span (click)="selectCustomer(customer)">
+                {{customer.name}} ({{customer.selected}})
+            </span>
+        </option>
+    </select>
+</div>
+
+<hr>
+<h5>Pizza state test</h5>
+{{test$}}
+<div *ngFor="let s of test | async; let i=index">
+    {{s.name}}
+</div>
+<hr>
 <div>
 <app-customer-add></app-customer-add>
 </div>

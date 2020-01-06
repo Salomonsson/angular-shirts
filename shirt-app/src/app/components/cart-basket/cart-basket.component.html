@@ -1,1 +1,12 @@
-<div>Cart-basket: <span>{{cartService.cartItems.length}}</span> (Total: <span>{{cartService.sum}} sek</span>)</div>
+<div>
+    <div *ngIf="selected$" style="background-color:lightcoral;">
+            <div>
+                {{selected$.name}} ({{selected$.Shirts.length}}) 
+            </div>
+            <div>
+
+            </div>
+        
+        </div>
+    <!-- Cart-basket: <span>{{cartService.cartItems.length}}</span> (Total: <span>{{cartService.sum}} sek</span>) -->
+</div>

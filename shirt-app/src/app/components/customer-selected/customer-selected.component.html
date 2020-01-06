@@ -1,14 +1,14 @@
-<p>customer-selected works!</p>
+<h4>Customer-selected component</h4>
+<div *ngIf="selected$" style="background-color:lightcoral;">
+    <div>
+        {{selected$.name}} ({{selected$.selected}})
+    </div>
+    <div>
+        <ul>
+            <li *ngFor="let s of selected$.Shirts let i=index">
+                {{s.name}} <button style="float: right" (click)="removeCartObject(s)">x</button>
+            </li>
+        </ul>
+    </div>
 
-<!-- {{selectedCustomer.name}} -->
-<ul class="customers">
-    {{customers}}
-    <li *ngFor="let customer of customers | async; let i=index">
-        <div *ngIf="customer.selected">
-        <span >{{i+1}}.</span> {{customer.name}}({{customer.selected}})
-        <!-- <button style="float: right" (click)="removeCustomer(i)">Remove</button>
-        <button style="float: right" (click)="selectCustomer(i)">selected</button> -->
-        </div>
-    </li>
-</ul>
-
+</div>

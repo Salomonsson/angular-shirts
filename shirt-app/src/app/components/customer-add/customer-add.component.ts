@@ -16,9 +16,10 @@ import {CustomerAdd} from '../../store/customer/customer.actions';
 export class CustomerAddComponent implements OnInit {
 
   customers: Observable<Customer[]>; 
+  data: Observable<Customer[]>;
 
   constructor(private store: Store<{ customers: Customer[] }>) { 
-    this.customers = store.pipe(select('customers')); 
+    this.customers = store.pipe(select('customers'));
   } 
 
   AddCustomer(customerName: string) { 

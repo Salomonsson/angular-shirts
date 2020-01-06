@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Customer} from '../../classes/customer';
 import {Observable} from 'rxjs';
 import {select, Store, State} from '@ngrx/store';
+import {CustomerRemoveCart} from '../../store/customer/customer.actions';
 
 @Component({
   selector: 'app-customer-selected',
@@ -12,31 +13,31 @@ import {select, Store, State} from '@ngrx/store';
 
 export class CustomerSelectedComponent implements OnInit {
 
-  selectedCustomer: Observable<Customer[]>;
-  customers: Observable<Customer[]>;
+  selected$: Observable<Customer>;
 
   constructor(private store: Store<{ customers: Customer[] }>) {
-    // let propertyValue = State.getValue().path.to.state.property;
-    // this.customers = this.store.source['value'];
-    // console.log(this.customers); // => { key: "123" }
 
+    this.store.select<any>('customers').subscribe(state => {
+      // console.log(state);
+      // this.selected$ = state;
+      for (var s of state) {
+        if(s.selected == true){
+          this.selected$ = s;
+        }
+      }
+    });
 
-    // console.log(this.store.value);
-    // console.log('beteende:  constructor');
-    //this.customers = store.pipe(select('customers'));  
-    //console.log(store.pipe(select('customers')));
-
-    // for (var s of this.customers) {
-
-    // }
-    
   }
-
 
 
   ngOnInit() {
     // console.log('beteende:  ngOnInit');
     // this.store.select(state => console.log(state.customers));
   }
+
+  removeCartObject(shirt){
+    this.store.dispatch(new CustomerRemoveCart(shirt));
+  }
+
 
 }

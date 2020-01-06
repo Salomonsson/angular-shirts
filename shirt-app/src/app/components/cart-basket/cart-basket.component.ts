@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart/cart.service';
+import {Customer} from '../../classes/customer';
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
 
 @Component({
   selector: 'app-cart-basket',
@@ -8,8 +11,23 @@ import { CartService } from '../../services/cart/cart.service';
 })
 export class CartBasketComponent implements OnInit {
 
-  constructor(public cartService: CartService) { }
+  selected$: Observable<Customer>;
 
+  // constructor(public cartService: CartService) { }
+  constructor(private store: Store<{ customers: Customer[] }>) {
+
+    this.store.select<any>('customers').subscribe(state => {
+      // console.log(state);
+      // this.selected$ = state;
+      for (var s of state) {
+        if(s.selected == true){
+          this.selected$ = s;
+        }
+      }
+    });
+
+  }
+  
   ngOnInit() {
   }
 

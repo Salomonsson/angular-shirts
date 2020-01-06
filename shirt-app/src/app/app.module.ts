@@ -14,6 +14,8 @@ import { CartBasketComponent } from './components/cart-basket/cart-basket.compon
 //State management
 import { StoreModule } from '@ngrx/store'; 
 import { CustomerReducer } from './store/customer/customer.reducer';
+import { CustomerCartReducer } from './store/customerCart/customerCart.reducer';
+import { SelectedCustomerReducer } from './store/customer/selectedCustomer.reducer';
 import { CustomersViewComponent } from './components/customers-view/customers-view.component';
 import { CustomerAddComponent } from './components/customer-add/customer-add.component';
 import { CustomerSelectedComponent } from './components/customer-selected/customer-selected.component';
@@ -36,7 +38,11 @@ import { CustomerSelectedComponent } from './components/customer-selected/custom
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    StoreModule.forRoot({ customers: CustomerReducer })
+    StoreModule.forRoot({ 
+      customers: CustomerReducer, 
+      selectedStoreModule: SelectedCustomerReducer,
+      customerCart: CustomerCartReducer
+     })
   ],
   providers: [],
   bootstrap: [AppComponent]

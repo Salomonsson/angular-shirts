@@ -3,6 +3,9 @@ import { Observable, of } from 'rxjs';
 import { Shirt } from '../../classes/shirt';
 import { MessageService } from '../message/message.service';
 
+import {Store} from '@ngrx/store';
+import {Customer} from '../../classes/customer';
+import {CustomerAddCart} from '../../store/customer/customer.actions';
 
 
 @Injectable({
@@ -14,8 +17,10 @@ export class CartService {
   cartItems: object[] = [];
   hasCartRefreshed: boolean = false;
   
+  customers: Observable<Customer[]>;
+  selected$: Observable<Customer>;
 
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService, private store: Store<{ customers: Customer[] }>) {}
 
 
   /**
@@ -23,7 +28,23 @@ export class CartService {
    * @param shirt object
    */
   AddItemCart(shirt: Shirt) {
-    this.cartItems.push(shirt);
+    console.log('add shirt item!!');
+    this.store.select<any>('customers').subscribe(state => {
+      for (var s of state) {
+        if(s.selected == true){
+          this.selected$ = s;
+        }
+      }
+    });
+
+    if(!this.selected$){
+      alert('Please select customer');
+    }else{
+      // this.store.dispatch(new CustomerAddCart(this.selected$));
+      this.store.dispatch(new CustomerAddCart(shirt));
+      this.cartItems.push(shirt);
+    }
+
   }
 
   
