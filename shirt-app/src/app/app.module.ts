@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { FormsModule , ReactiveFormsModule} from '@angular/forms'; // <-- NgModel lives here
 import { HttpClientModule }    from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -14,11 +14,18 @@ import { CartBasketComponent } from './components/cart-basket/cart-basket.compon
 //State management
 import { StoreModule } from '@ngrx/store'; 
 import { CustomerReducer } from './store/customer/customer.reducer';
-import { CustomerCartReducer } from './store/customerCart/customerCart.reducer';
-import { SelectedCustomerReducer } from './store/customer/selectedCustomer.reducer';
+//Effects
+import { EffectsModule } from '@ngrx/effects';
+import { BasketEffects } from './store/customer/effects/basket.effects';
+// import { ToDoEffects } from './ToDo/todo.effects';
+
 import { CustomersViewComponent } from './components/customers-view/customers-view.component';
 import { CustomerAddComponent } from './components/customer-add/customer-add.component';
 import { CustomerSelectedComponent } from './components/customer-selected/customer-selected.component';
+
+//toast
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';//for the toast
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -36,13 +43,15 @@ import { CustomerSelectedComponent } from './components/customer-selected/custom
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    StoreModule.forRoot({ 
-      customers: CustomerReducer, 
-      selectedStoreModule: SelectedCustomerReducer,
-      customerCart: CustomerCartReducer
-     })
+    StoreModule.forRoot({ //state management
+      customers: CustomerReducer
+     }),
+     EffectsModule.forRoot([BasketEffects]), //effect of store
+     BrowserAnimationsModule, // required animations module
+     ToastrModule.forRoot() // ToastrModule added
   ],
   providers: [],
   bootstrap: [AppComponent]

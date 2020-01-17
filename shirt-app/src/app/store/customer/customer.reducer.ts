@@ -27,7 +27,6 @@ export function CustomerReducer(state = initialState, action: ActionEx) {
           s.selected = false;
         }
         state[action.payload].selected = true;
-        // this.SelectedCustomerReducer('test', action.payload);
         return [
           ...state
         ];
@@ -52,7 +51,6 @@ export function CustomerReducer(state = initialState, action: ActionEx) {
             for (var i = 0; i < customer.Shirts.length; i++) {
               if(customer.Shirts[i].id == action.payload.id){
                 customer.Shirts.splice(i, 1);
-
               }
             }
             break;
@@ -69,6 +67,8 @@ export function CustomerReducer(state = initialState, action: ActionEx) {
   }
 
 }
+
+
 
 
 export const getProductsState = createFeatureSelector<any>(

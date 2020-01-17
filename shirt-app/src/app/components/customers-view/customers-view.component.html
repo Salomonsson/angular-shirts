@@ -1,49 +1,55 @@
 <h4>Customers-view component</h4>
-  {{ selected$.name }}
-    <div *ngFor="let s of selected | async; let i=index">
-      {{s.name}}
-    </div>
-
 
 <div>
   <div *ngFor="let customer of customers | async; let i=index" style="background-color: lightgray; padding:2rem; margin: 1rem;">
+    <div *ngIf="customer.selected" style="background-color: red;">
+      it is selected - hard coded html
+    </div>
     <div>
       <span >{{i+1}}.</span>
       <span>{{customer.name}}({{customer.selected}})</span>
+      <br />
+      <span>{{customer.gender}}</span>
       <button style="float: right" (click)="removeCustomer(i)">Remove</button>
       <button style="float: right" (click)="selectCustomer(i)">selected</button>
     </div>
     <div>
       <h5>Cart items</h5>
+      {{customer.shirtToggle}}
+      <button style="float: right" (click)="toggleCartShirts(customer)">See more..</button>
+      <div *ngIf="customer.shirtToggle">
+        Toggle this shirt
+      </div>
       <span *ngFor="let shirt of customer.Shirts">
         {{shirt.name}}
       </span>
+
     </div>
   </div>
 </div>
 
 
-
-<ul class="customers">
-  <li *ngFor="let customer of customers | async; let i=index">
-    <span >{{i+1}}.</span> {{customer.name}}({{customer.selected}})
-    <button style="float: right" (click)="removeCustomer(i)">Remove</button>
-    <button style="float: right" (click)="selectCustomer(i)">selected</button>
-  </li>
-</ul>
-
 <div *ngIf="customers">
-    <select class="selectpicker" style="width: 150px; height:50px; padding: 1rem; font-size: 1rem; font-weight:bold;">
+    <select id="mySelect">
         <option *ngFor="let customer of customers | async; let i=index"  value="customer.name">
-            <span (click)="selectCustomer(customer)">
-                {{customer.name}} ({{customer.selected}})
-            </span>
+            {{customer.name}} ({{customer.selected}})
         </option>
-    </select>
+    </select>    
 </div>
 
-<hr>
-<h5>Pizza state test</h5>
+
+<div class="select-wrapper">
+  <label for="select">Select one</label>
+  <select class="">
+      <option disabled="" selected="" value=""></option>
+      <option value="Owned media" class="">Owned media</option>
+      <option value="Owned media" class="">Owned media2</option>
+      <option value="Owned media" class="">Owned media3</option>
+  </select>
+</div>
+
+
+<h2>Pizza test</h2>
 {{test$}}
 <div *ngFor="let s of test | async; let i=index">
     {{s.name}}

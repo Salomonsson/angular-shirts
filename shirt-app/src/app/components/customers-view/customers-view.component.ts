@@ -19,14 +19,13 @@ export class CustomersViewComponent implements OnInit{
   customers: Observable<Customer[]>;
   selected$: Observable<Customer>;
   test$: Observable<Customer>;
-  
+
+
+
   constructor(private store: Store<{ customers: Customer[], selectedStoreModule: Customer }>) {
     
     this.customers  = store.pipe(select('customers'));
     this.test$ = this.store.select(getPizzaState);
-    console.log(this.test$);
-    // this.selected = this.selected.source.source.source['value'].selectedStore;
-    // console.log(this.selected.source.source.source['value'].selectedStoreModule);
   }
 
   ngOnInit(){
@@ -45,6 +44,12 @@ export class CustomersViewComponent implements OnInit{
   selectCustomer(customerIndex){
     console.log('customerIndex - select function');
     this.store.dispatch(new CustomerSelect(customerIndex));
+  }
+
+  toggleCartShirts(customer){
+    console.log(customer.toggleCartShirts);
+    customer.toggleCartShirts = true;
+    
   }
 
 }

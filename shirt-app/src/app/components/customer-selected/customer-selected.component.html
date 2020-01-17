@@ -1,4 +1,5 @@
 <h4>Customer-selected component</h4>
+<h5>total:: {{total}}</h5>
 <div *ngIf="selected$" style="background-color:lightcoral;">
     <div>
         {{selected$.name}} ({{selected$.selected}})
@@ -6,7 +7,7 @@
     <div>
         <ul>
             <li *ngFor="let s of selected$.Shirts let i=index">
-                {{s.name}} <button style="float: right" (click)="removeCartObject(s)">x</button>
+                {{s.name}}({{s.price}}) <button style="float: right" (click)="removeCartObject(s)">x</button>
             </li>
         </ul>
     </div>

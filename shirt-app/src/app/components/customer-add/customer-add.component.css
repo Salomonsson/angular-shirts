@@ -1,0 +1,110 @@
+.form-wrapper{
+    text-align: center;
+    padding: 2rem;
+}
+form {
+    background-color: white;
+    border: 1px solid grey;
+    width: 700px;
+    padding: 4rem;
+    color: #607d8b;
+    display: inline-block;
+}
+
+form div{
+    font-size: 1.5rem;
+    font-weight: 100;
+    margin: 1rem;
+    vertical-align: middle;
+}
+
+.input-wrapper-textname{
+    border: 2px solid lightgray;
+    /* background-color: red; */
+    text-align: left;
+    padding: 1rem;
+    border-radius: 2px;
+}
+.input-wrapper-textname:focus-within{
+    border: 2px solid #339DFF;
+    border-radius: 4px;
+}
+
+.input-wrapper-textname label{
+    display: block;
+}
+
+.input-wrapper-textname input{
+    height: 3.4rem;
+    font-size: 2rem;
+    width: 100%;
+    font-family: sans-serif;
+    outline-width: 0;
+    border: none;
+}
+input[type="text"]{
+    height: 3rem;
+    font-size: 3rem;
+}
+
+
+label .gender{
+    font-size:1.5rem;
+    vertical-align: middle;
+    margin-top: 100px;
+  }
+  
+input[type="radio"]{
+    vertical-align: middle;
+}
+
+
+
+
+.btn-wrapper button{
+    width: 200px;
+    height: 5rem;
+    margin: .6rem;
+    font-size: 1.5rem;
+    font-family: sans-serif;
+    border-radius: 2px;
+    border: 2px solid #FFF;
+}
+.btn-wrapper button:hover{
+    cursor: pointer;
+    border: 2px solid #FFF;
+    border-radius: 6px;
+}
+
+button:active{
+    border: 2px solid #FFF;
+    box-shadow: none;
+    box-shadow: 0 0 0 4px #4595ff;
+    outline: 0;
+}
+button:focus{
+    border: none;
+    outline: none;
+}
+#btnCreateCustomerAbort{
+    background-color: lightgray;
+}
+
+#btnCreateCustomer{
+    background-color: #339DFF;
+    color: white;
+}
+
+
+@media (max-width: 600px) {
+    .form-wrapper {
+        font-size: 10px;
+        max-height: 75px; 
+    }
+}
+@media (max-width: 1024px) {
+    .form-wrapper {
+        margin: 0;
+    }
+}
+  

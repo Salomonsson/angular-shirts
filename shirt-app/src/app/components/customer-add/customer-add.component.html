@@ -1,3 +1,27 @@
 <h4>Customer-add component</h4>
 <h4>Add New Customer</h4>
-<input #box ><button (click)="AddCustomer(box.value)">Add</button>
+<div class="form-wrapper">
+        <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)" [class]="formCustomer">
+                <div class="input-wrapper-textname">
+                    <label for="name">Name</label>
+                    <input id="name" type="text" formControlName="name">
+                </div>
+                
+                <div class="form-gender">
+                    <label class="gender">
+                        <input type="radio" value="Male" formControlName="gender">
+                        <span>Male</span>
+                    </label>
+                    <label class="gender" style="margin-left: 2rem;">
+                        <input type="radio" value="Female" formControlName="gender">
+                        <span>Female</span>
+                    </label>
+                </div>
+                
+                <div class="btn-wrapper">
+                    <button class="button" id="btnCreateCustomerAbort" type="submit">Avbryt</button>
+                    <button class="button" id="btnCreateCustomer" type="submit">Create</button>
+                </div>
+                
+            </form>
+</div>
