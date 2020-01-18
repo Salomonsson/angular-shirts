@@ -28,27 +28,6 @@
   </div>
 </div>
 
-
-<div *ngIf="customers">
-    <select id="mySelect">
-        <option *ngFor="let customer of customers | async; let i=index"  value="customer.name">
-            {{customer.name}} ({{customer.selected}})
-        </option>
-    </select>    
-</div>
-
-
-<div class="select-wrapper">
-  <label for="select">Select one</label>
-  <select class="">
-      <option disabled="" selected="" value=""></option>
-      <option value="Owned media" class="">Owned media</option>
-      <option value="Owned media" class="">Owned media2</option>
-      <option value="Owned media" class="">Owned media3</option>
-  </select>
-</div>
-
-
 <h2>Pizza test</h2>
 {{test$}}
 <div *ngFor="let s of test | async; let i=index">
