@@ -42,7 +42,10 @@ export class CartService {
     }else{
       // this.store.dispatch(new CustomerAddCart(this.selected$));
       this.store.dispatch(new CustomerAddCart(shirt));
-      this.cartItems.push(shirt);
+      
+      
+      //can be removed below
+      // this.cartItems.push(shirt);
     }
 
   }
@@ -52,13 +55,13 @@ export class CartService {
    * Remove shirt from the cart array
    * @param shirt 
    */
-  RemoveItemCart(shirt: Shirt) {
-    this.cartItems.forEach((element, index, array) => {
-      if(element['id'] == shirt.id){
-        this.cartItems.splice(index, 1);
-      }
-    });
-  }
+  // RemoveItemCart(shirt: Shirt) {
+  //   this.cartItems.forEach((element, index, array) => {
+  //     if(element['id'] == shirt.id){
+  //       this.cartItems.splice(index, 1);
+  //     }
+  //   });
+  // }
 
 
   /**

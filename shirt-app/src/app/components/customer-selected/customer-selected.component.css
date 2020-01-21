@@ -1,0 +1,17 @@
+img{
+    height: 140px;
+}
+.Media {
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 1px solid black;
+    padding-top: 2rem;
+  }
+  
+  .Media-figure {
+    margin-right: 1em;
+  }
+  
+  .Media-body {
+    flex: 1;
+  }

@@ -47,7 +47,7 @@ export class ShirtsComponent implements OnInit {
    */
   RemoveFromCart(shirt: Shirt): void {
     shirt.inCart =  false;
-    this.cartService.RemoveItemCart(shirt);
+    // this.cartService.RemoveItemCart(shirt);
     this.cartService.CurrentPrice();
   }
 

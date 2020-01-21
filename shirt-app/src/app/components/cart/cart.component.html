@@ -1,24 +1,20 @@
+
 <div>
-    <app-customer-selected></app-customer-selected>
+    This is the cart wrapper
 </div>
-<div *ngIf="!cartService.cartItems.length">
-    <h1>Your cart is empty</h1>
-</div>
-<div *ngIf="cartService.cartItems.length">
-    <h2>Your cart of shirts</h2>
-    <h2>cartItems ({{cartService.cartItems.length}})</h2>
-    <button class="clear" (click)="cartService.clear();">clear cart</button>
-    <div>Current price total: <span>{{cartService.sum}}</span></div>
 
-    <div *ngFor='let item of cartService.cartItems' class="Media">
-        <img [src]="item.image" class="Media-figure"> <br />
-        <p class="Media-body">
-            <b>{{item.name}} {{item.type}} ({{item.size}}) - Remove</b> <br />
-            <span>{{item.description}}</span>
-        </p>
-        <p>
-            <span>Pris: {{item.price}}</span>
-        </p>
+<div *ngIf="cartLength">
+    <div *ngIf="selected$" style="background-color:lightcoral;">
+        <h5>Total price:: {{total}}</h5>    
+        <h5>Cart length:: {{cartLength}}</h5>
+        <div>
+            {{selected$.name}} ({{selected$.selected}})
+        </div>
     </div>
+    <!-- <app-customer-selected></app-customer-selected> -->
+    <app-customer-selected [shirtobjects]="selected$.Shirts" (deleteObjectEmitter)="removeCartObject($event)"></app-customer-selected>
+</div>
 
+<div *ngIf="!cartLength">
+    <h1>Your cart is empty!!!</h1>
 </div>

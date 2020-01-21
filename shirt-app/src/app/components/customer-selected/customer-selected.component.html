@@ -1,15 +1,17 @@
-<h4>Customer-selected component</h4>
-<h5>total:: {{total}}</h5>
-<div *ngIf="selected$" style="background-color:lightcoral;">
+<h4>Customer-selected component - inherited value from parent component.</h4>
+<div>
+    <p>This component inherit the shirts of object - All shirts added to basket</p>
     <div>
-        {{selected$.name}} ({{selected$.selected}})
+        <div *ngFor='let item of shirtobjects' class="Media">
+            <img [src]="item.image" class="Media-figure"> <br />
+            <p class="Media-body">
+                <b>{{item.name}} {{item.type}} ({{item.size}}) - Remove</b> <br />
+                <span>{{item.description}}</span>
+            </p>
+            <p>
+                <span>Pris: {{item.price}}</span>
+                <button style="float: right" (click)="deleteShirtObject(item)">x</button>
+            </p>
+        </div>
     </div>
-    <div>
-        <ul>
-            <li *ngFor="let s of selected$.Shirts let i=index">
-                {{s.name}}({{s.price}}) <button style="float: right" (click)="removeCartObject(s)">x</button>
-            </li>
-        </ul>
-    </div>
-
 </div>
