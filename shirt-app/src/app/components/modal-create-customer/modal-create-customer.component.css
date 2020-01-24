@@ -1,0 +1,20 @@
+.wrapper-form-create-user-modal{
+    /* background-color: lightgrey; */
+    padding: 3rem;
+    /* color: black !important; */
+    font-size: 2rem;
+}
+
+.example-full-width{
+    /* color: black !important; */
+    /* background-color: lightgrey; */
+    display: block;
+}
+
+label, input, form{
+    /* color: red !important; */
+}
+
+.wrapper-bottom-modal{
+    float: right;
+}

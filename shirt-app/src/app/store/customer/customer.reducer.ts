@@ -67,19 +67,3 @@ export function CustomerReducer(state = initialState, action: ActionEx) {
   }
 
 }
-
-
-
-
-export const getProductsState = createFeatureSelector<any>(
-  'customers'
-);
-
-
-export const getPizzaState = createSelector(
-  getProductsState,
-  (state: Customer) => state
-);
-
-
-// export const getAllPizzas = createSelector(getPizzaState, customers.getProductsState);

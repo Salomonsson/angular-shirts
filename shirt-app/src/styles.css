@@ -1,7 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 /* Application-wide Styles */
 h1 {
-    color: #369;
+    margin-top: 3rem;
+    /* color: #369; */
+    color: black;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 250%;
   }
@@ -11,8 +13,9 @@ h1 {
     font-weight: lighter;
   }
   body {
-    background-color: grey;
-    margin: 2em;
+    background-color: whitesmoke;
+    margin: 5rem; 
+    font-family: Roboto, "Helvetica Neue", sans-serif;
   }
   body, input[type="text"], button {
     color: #333;
@@ -41,3 +44,4 @@ h1 {
     display: table;
     clear: both;
   }
+html, body { height: 100%; }

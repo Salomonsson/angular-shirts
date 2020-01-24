@@ -37,12 +37,12 @@ ul li h2{
   }
   
   .select-wrapper label{
-    background-color: tomato;
+    /* background-color: tomato; */
     display: inline-block;
   }
   .select-wrapper:focus-within{
     /* border: 2px solid #339DFF; */
-    border: 2px solid red;
+    border: 2px solid blue;
     border-radius: 4px;
   }
   

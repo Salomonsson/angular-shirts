@@ -18,3 +18,8 @@
     overflow: hidden;
     padding: 1rem;
 }
+
+.selected-customer{
+  /* background-color: purple !important; */
+  background-color: lightgrey !important;
+}

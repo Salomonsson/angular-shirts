@@ -27,6 +27,13 @@ import { CustomerSelectedComponent } from './components/customer-selected/custom
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';//for the toast
 import { ToastrModule } from 'ngx-toastr';
 
+/* Angular material */
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularMaterialModule } from './angular-material.module';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ModalCreateCustomerComponent } from './components/modal-create-customer/modal-create-customer.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +44,8 @@ import { ToastrModule } from 'ngx-toastr';
     CartBasketComponent,
     CustomersViewComponent,
     CustomerAddComponent,
-    CustomerSelectedComponent
+    CustomerSelectedComponent,
+    ModalCreateCustomerComponent,
   ],
   // @NgModule metadata's imports array, which contains a list of external modules that the app needs.
   imports: [
@@ -50,10 +58,13 @@ import { ToastrModule } from 'ngx-toastr';
       customers: CustomerReducer
      }),
      EffectsModule.forRoot([BasketEffects]), //effect of store
-     BrowserAnimationsModule, // required animations module
-     ToastrModule.forRoot() // ToastrModule added
+     BrowserAnimationsModule, // required animations module //Also required in the material import
+     ToastrModule.forRoot(), // ToastrModule added
+     AngularMaterialModule, //Angular Material import
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  entryComponents: [ModalCreateCustomerComponent]
 })
 export class AppModule { }

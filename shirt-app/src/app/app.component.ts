@@ -13,7 +13,7 @@ import {select, Store, State} from '@ngrx/store';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'An App in Angular using Ngrx and effects!';
+  title = 'Angular: 8 - State management';
   customers: Observable<Customer[]>;
 
 

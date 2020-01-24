@@ -1,0 +1,23 @@
+<div class="wrapper-form-create-user-modal">
+    <h1 mat-dialog-title>{{data.title}}</h1>
+    <div mat-dialog-content>
+        <!-- <input matInput [(ngModel)]="data.gender"> -->
+        <mat-form-field class="example-full-width">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Name the client" [(ngModel)]="data.name">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+        <mat-label>Gender</mat-label>
+        <select matNativeControl required [(ngModel)]="data.gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+        </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions class="wrapper-bottom-modal">
+        <button mat-button (click)="onNoClick()">Cancel</button>
+        <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Create</button>
+    </div>
+</div>

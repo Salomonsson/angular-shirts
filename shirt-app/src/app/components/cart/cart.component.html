@@ -1,6 +1,6 @@
 
 <div>
-    This is the cart wrapper
+    This is the cart component
 </div>
 
 <div *ngIf="cartLength">
@@ -15,6 +15,6 @@
     <app-customer-selected [shirtobjects]="selected$.Shirts" (deleteObjectEmitter)="removeCartObject($event)"></app-customer-selected>
 </div>
 
-<div *ngIf="!cartLength">
+<div *ngIf="!cartLength" style="text-align:center;">
     <h1>Your cart is empty!!!</h1>
 </div>
