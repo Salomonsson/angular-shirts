@@ -2,29 +2,28 @@
   <button mat-raised-button (click)="openDialog()">Create customer</button>
 </div>
 <h4>Customers-view component</h4>
-<div style="padding:8rem;">
+<div style="padding-left:24rem;padding-right:24rem;">
   <div *ngFor="let customer of customers | async; let i=index">
     <div [class.selected-customer]="customer.selected" style="background-color: white; border:1px solid black; padding:2rem; margin: 3rem; border-radius:4px;">
-      <div *ngIf="customer.selected" style="height: 2rem; position: relative;">
+      <div *ngIf="customer.selected" style="position: relative;">
           <span style="background-color: aquamarine;padding: .6rem; border-radius: 4px;position: absolute; right: 0;top: -45px;">Selected cart</span>
       </div>  
       <div>
-        <span >{{i+1}}.</span>
-        <span>{{customer.name}}({{customer.selected}})</span>
+        <span style="font-size:2.3rem;">{{i+1}}.</span>
+        <span style="font-size:2.3rem;">{{customer.name}}</span>
         <br />
         <span>{{customer.gender}}</span>
         <button style="float: right" (click)="removeCustomer(i)">Remove</button>
-        <button style="float: right" (click)="selectCustomer(i)">selected</button>
+        <button style="float: right" (click)="selectCustomer(customer)">selected</button>
       </div>
       <div>
-        <h5>Cart items</h5>
-        {{customer.shirtToggle}}
+        <h5>Cart items toggle: {{customer.shirtToggle}}</h5>
         <button style="float: right" (click)="toggleCartShirts(customer)">See more..</button>
         <div *ngIf="customer.shirtToggle">
           Toggle this shirt
         </div>
         <span *ngFor="let shirt of customer.Shirts">
-          {{shirt.name}}
+          <img [src]="shirt.image" class="Media-figure" width="50" style="padding-right:1rem;"> 
         </span>
       </div>  
     </div>
@@ -32,15 +31,8 @@
 </div>
 
 
-<div *ngFor="let s of test | async; let i=index">
-    {{s.name}}
-</div>
-
-<hr>
-
-<hr>
+<!-- <hr>
 <div>
-<app-customer-add></app-customer-add>
+  <app-customer-add></app-customer-add>
 </div>
-
-
+ -->

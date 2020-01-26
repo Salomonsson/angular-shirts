@@ -36,7 +36,7 @@ export class BasketEffects {
     this.action$.pipe(
       ofType(CustomerActionTypes.Remove),
       tap(() => 
-        this.toastr.info('Customer has been removed!', 'Customer removed',{
+        this.toastr.info('Customer has been removed from state!', 'Customer removal!',{
             timeOut: 900,
             positionClass: 'toast-top-center',
           }
@@ -51,7 +51,7 @@ export class BasketEffects {
     this.action$.pipe(
       ofType(CustomerActionTypes.Select),
       tap((x) => 
-        this.toastr.success('Product has been added to cart!', 'Cart',{
+        this.toastr.success('Customer has been selected.', 'Customer Selected!',{
             timeOut: 900,
             positionClass: 'toast-top-center',
           }

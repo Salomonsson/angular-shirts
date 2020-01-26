@@ -25,8 +25,11 @@ export function CustomerReducer(state = initialState, action: ActionEx) {
       case CustomerActionTypes.Select:{
         for (var s of state) {
           s.selected = false;
+          if(s.name == action.payload.name){
+            s.selected = true;
+          }
         }
-        state[action.payload].selected = true;
+        
         return [
           ...state
         ];

@@ -3,20 +3,24 @@
 <!-- component: app.component <br />
 {{customers}} <br />
 Göra en selector som väljer ut selected? <br /> -->
-<div class="top-nav" *ngIf="customers">
+<div class="top-nav" style="height: 60px;">
     <div>
         <div>
             <app-cart-basket></app-cart-basket>
         </div>
-        <div class="select-wrapper">
-        <label for="select">Select one</label>
-        <select class="">
-            <!-- <option disabled="" selected="" value=""></option> -->
-            <option *ngFor="let customer of customers | async; let i=index"  value="customer.name">
-                {{customer.name}} ({{customer.selected}})
-            </option>
-        </select>
+        <div class="select-wrapper" *ngIf="selectedObj">
+            <label for="select">Current client:</label>
+            <select [ngModel]="selectedObj" (ngModelChange)="onChangeObj($event)">
+                <option *ngIf="selectedObj" [ngValue]="selectedObj">{{selectedObj}}</option>
+                <option *ngFor="let customer of customers | async; let i=index" [ngValue]="customer">
+                    {{customer.name}} 
+                    <span *ngIf="customer.selected">
+                        (Selected)
+                    </span>
+                </option>
+            </select>
         </div>
+
     </div>
 </div>
 <div style="text-align:center;">

@@ -2,14 +2,10 @@
 <div>
     This is the cart component
 </div>
-
-<div *ngIf="cartLength">
-    <div *ngIf="selected$" style="background-color:lightcoral;">
-        <h5>Total price:: {{total}}</h5>    
-        <h5>Cart length:: {{cartLength}}</h5>
-        <div>
-            {{selected$.name}} ({{selected$.selected}})
-        </div>
+<div *ngIf="cartLength" style="padding:5rem;">
+    <div *ngIf="selected$">
+        <h2>Current price: {{total}}</h2>
+        <h2>Total object in cart: {{cartLength}}</h2>
     </div>
     <!-- <app-customer-selected></app-customer-selected> -->
     <app-customer-selected [shirtobjects]="selected$.Shirts" (deleteObjectEmitter)="removeCartObject($event)"></app-customer-selected>

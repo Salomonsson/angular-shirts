@@ -5,15 +5,14 @@
     <!-- <app-shirt-detail [shirt]="selectedShirt"></app-shirt-detail> -->
 </div>
 <div>
-    <h3>Size {{shirtsLength}}</h3>
     <div>
-        <span *ngFor="let t of sizes; trackBy: trackByFn"> {{t.size}}</span>
+        <!-- <span *ngFor="let t of sizes; trackBy: trackByFn"> {{t.size}}</span> -->
     </div>
     <hr>
-    <h2>{{header}} (Arr length: {{this.shirtService.shirtArray.length}})</h2>
+    <h2>{{header}} ({{this.shirtService.shirtArray.length}} total)</h2>
     <div class="gallery">
       <div *ngFor="let shirtInstance of shirts; trackBy: trackByFn" class="gallery-item">
-        <span>Is in cart: {{shirtInstance.inCart}}</span> <br />
+        <!-- <span>Is in cart: {{shirtInstance.inCart}}</span> <br /> -->
         <a routerLink="/detail/{{shirtInstance.id}}">
             <img [src]="shirtInstance.image" class="image-shirt" />
         </a>

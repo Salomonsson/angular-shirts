@@ -1,8 +1,9 @@
 <div>
     <div *ngIf="selected$" style="background-color:lightcoral;">
             <div class="basket-wrapper">
-                {{selected$.name}} ({{selected$.Shirts.length}})
+                <b style="font-size: 1.2rem;">Customer: {{selected$.name}}</b>
                 <img class="image-basket" src="https://cdn.onlinewebfonts.com/svg/img_290616.png"/>
+                <span id="roundBasket">{{selected$.Shirts.length}}</span>
             </div>
             <div>
 

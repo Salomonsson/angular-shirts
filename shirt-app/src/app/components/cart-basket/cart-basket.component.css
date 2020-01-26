@@ -8,3 +8,17 @@
 .image-basket{
     height: 30px;
 }
+
+#roundBasket{
+    background-color: yellow;
+    height: 50px;
+    width: 51px;
+    font-size: 2rem;
+    border-radius: 57%;
+    border: 1px solid black;
+    top: 40px;
+    right: 50px;
+    position: fixed;
+    text-align: center;
+    padding-top: 7px;
+}

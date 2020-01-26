@@ -23,7 +23,6 @@ export class CustomersViewComponent implements OnInit{
 
   customers: Observable<Customer[]>;
   selected$: Observable<Customer>;
-  test$: Observable<Customer>;
   //modal
   gender: string;
   name: string;

@@ -15,7 +15,6 @@ import {ShirtView} from '../../interfaces/iShirtView'
 export class ShirtsComponent implements OnInit {
   //import the array of fake shirts
   selectedShirt: Shirt;
-  shirtsLength: any;
   shirts: Shirt;
   sizes : any;
   header: string;

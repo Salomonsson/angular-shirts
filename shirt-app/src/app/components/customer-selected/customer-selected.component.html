@@ -1,6 +1,5 @@
 <h4>Customer-selected component - inherited value from parent component.</h4>
 <div>
-    <p>This component inherit the shirts of object - All shirts added to basket</p>
     <div>
         <div *ngFor='let item of shirtobjects' class="Media">
             <img [src]="item.image" class="Media-figure"> <br />
@@ -9,8 +8,8 @@
                 <span>{{item.description}}</span>
             </p>
             <p>
-                <span>Pris: {{item.price}}</span>
-                <button style="float: right" (click)="deleteShirtObject(item)">x</button>
+                <span>Pris: {{item.price}}</span> <br />
+                <button style="float: right" (click)="deleteShirtObject(item)">Remove</button>
             </p>
         </div>
     </div>
